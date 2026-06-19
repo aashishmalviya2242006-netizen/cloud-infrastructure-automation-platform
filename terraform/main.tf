@@ -1,5 +1,5 @@
 resource "aws_vpc" "main" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block =var.vpc_cidr
   
   tags = {
      Name = "devsecops-project-vpc"
@@ -7,7 +7,7 @@ resource "aws_vpc" "main" {
 }
 resource "aws_subnet" "public_subnet" {
   vpc_id     = aws_vpc.main.id
-  cidr_block = "10.0.1.0/24"
+  cidr_block = var.subnet_cidr
 
   tags = {
     Name = "public-subnet"
@@ -83,9 +83,9 @@ resource "aws_security_group" "web_sg" {
 
 
 resource "aws_instance" "web_server" {
-  ami                    = "ami-006f82a1d5a27da54"
-  instance_type          = "t3.micro"
-  key_name               = "terraform-key"
+  ami                    = var.ami_id
+  instance_type          = var.instance_type
+  key_name               = var.key_name
   subnet_id              = aws_subnet.public_subnet.id
   vpc_security_group_ids = [aws_security_group.web_sg.id]
 
