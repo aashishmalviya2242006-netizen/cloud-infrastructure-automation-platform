@@ -16,3 +16,4 @@ Thumbs.db
 
 # swap file
 *.swp
+checkov-env/
