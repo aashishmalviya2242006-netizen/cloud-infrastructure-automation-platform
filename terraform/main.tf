@@ -101,6 +101,10 @@ resource "aws_instance" "web_server" {
 
   associate_public_ip_address = true
 
+  metadata_options {
+    http_tokens = "required"
+  }
+
   tags = {
     Name = "terraform-web-server"
   }
