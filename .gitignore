@@ -13,3 +13,6 @@
 # OS Files
 .DS_Store
 Thumbs.db
+
+# swap file
+*.swp
