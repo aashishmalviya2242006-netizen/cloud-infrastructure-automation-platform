@@ -105,6 +105,11 @@ resource "aws_instance" "web_server" {
     http_tokens = "required"
   }
 
+  root_block_device {
+    encrypted = true
+  }
+
+
   tags = {
     Name = "terraform-web-server"
   }
